@@ -1,0 +1,225 @@
+计算机研究与发展 Journal of Computer Research and Development
+
+ISSN 100021239Π CN 1121777ΠTP 43 ( 9) : 1644～1650 , 2006
+
+基于 HTML 模式代数的 Web 信息提取方法
+李石君
+1 2 3
+
+1 ,2
+
+　 于俊清 　欧伟杰
+
+3
+
+1
+
+( 武汉大学计算机学院 　 武汉 　 430072) ( 中国科学院计算机科学重点实验室 　 北京 　 100080) ( 华中科技大学计算机科学与技术学院 　 武汉 　 430072) ( shjli @public1wh1 hb1cn)
+
+Web Inf ormation Extraction Based on HTML Pattern Algebra
+Li Shijun1 ,2 , Yu J unqing3 , and Ou Weijie1
+1 2 3
+
+( School of Com puter Science , W uhan U niversity , W uhan 430072) ( L aboratory of Com puter Science , Chi nese A cadem y of Sciences , Beiji ng 100080) ( School of Com puter Science and Technology , Huaz hong U niversity of Science and Technology , W uhan 430072)
+
+Abstract 　Generating wrapper efficiently for ext racting Web data has broad application prospect , but is also a difficult problem t hat is not yet solved efficiently till now1 To tackle t his problem , a pattern algebra for H TML document s is int roduced , which includes key concept s , such as consistent pattern set , and t he addi2 tion operation of pattern , and based on it a new approach to ext ract Web information is presented1 It in2 duces t he consistent pattern set which represent s identifying rules of each att ribute by exploring t he whole samples , and t hen ext ract s data by t he consistent pattern set wit h multiple patterns1 It can apply Web pages wit h tabular st ruct ure , in which t here are missing att ributes or att ributes wit h multiple values or dif2 ferent order and hierarchical st ruct ure , and has been validated experimentally in t he prototype1 Key words 　 Web information ext raction ; wrapper induction ; Web mining
+摘　 要　 高效地生成提取 Web 信息的包装器有着广阔的应用前景 , 同时也是至今没有得到有效解决的
+
+难题1 为此 ,提出了基于 H TML 文档的模式代数 , 该代数包括一致模式集等重要概念以及模式的加法 运算1 在此基础上 ,提出了一种提取 Web 信息的新方法 ,该方法采用在整个训练例子中学习表示各属性 提取规则的一致模式集 ,再由多个模式组成的一致模式集提取数据 ,适用于提取具有缺省属性 、 多值属 性、 属性具有多种不同顺序的表结构网页和层次结构网页 ,其有效性在原型系统中通过实验得到验证1
+关键词 　Web 信息提取 ; 包装器归纳学习 ; Web 挖掘 中图法分类号 　TP3111135
+
+　　 高效地生成提取 Web 信息的包装器在 Web 信 息检索 、 集成 、 挖掘中有着广阔的应用前景1 尽管基 于 RDF ,XML 和 OWL 的语义 Web 的目的是使新 一代 Web 能被机器理解 , 但 Web 现有的和目前每 天发布的主要信息都基于 H TML , 因此 , 目前期待 整个 Web 采用语义 Web 标注还不切实际 1 由于
+H TML 只描述数据显示 , 不描述数据的内容 , 不便
+　 收稿日期 :2005 - 05 - 11 ; 修回日期 :2006 - 03 - 14
+
+于机器理解和查询 , 因此 , 提取 Web 信息是十分困 难的1 包装器是一个从特定信息源提取数据的过程1 Web 包装器以网页作为输入 , 返回网页中用户感兴 趣的数据1 返回数据通常采用关系或者 XML 表示1 手写包装器开发复杂且维护困难1 归纳学习方法通 过用户标注例子 Web 网页中需提取的数据 ,归纳学
+
+　 基金项目 : 国家自然科学基金项目 (60573095) ; 湖北省自然科学基金项目 (2005ABA238) 1
+
+李石君等 : 基于 HTML 模式代数的 Web 信息提取方法
+
+1645
+
+习提取 Web 数据的包装器1 现有的包装器归纳学习 方法仅在数据的左右两边标记 ( token ) 中学习该数 据的提取规则 ,并仅采用单一提取规则来表示每个 需提取的数据1 因此 , 其表达能力较弱 , 仅能提取部 分 Web 网页 , 不能适用于格式多样 、 经常变化的
+Web 网页1 为此 ,本文扩展了现有方法 , 首先为形式
+
+化表示 H TML 文档中数据的识别规则和特点 ,提出 了基于 H TML 文档的模式代数 ,该代数形式化地定 义了 H TML 文档的模式 、 模式匹配 、 模式空间 、 一致 模式集等重要概念 ; 第 2 ,在整个例子标记中学习识 别需提取数据的模式规则 , 而不仅仅只在属性左右 两边标记中学习 , 因此提高了表达能力 ; 第 3 , 采用 由多个模式组成的一致模式集表示需提取数据的识 别规则 ,因而适合于提取格式多样的 Web 网页1
+
+确提取后 ,可由标注的实例学习父结点中各个子结 点的提取规则1 这样 Web 层次信息可由上至下逐层 被正确地提取1 因此 , Web 层次信息的提取问题可 归结为在父结点被提取后如何正确提取各子结点的 问题1 例 21 设需提取例 1 中子结点厂家名 、 地址 、 电 话、 邮编的值1 首先由用户标注的商品例子 , 学习 list ( 商品) 中各商品的提取规则并提取各商品的值 , 然后由用户标注的厂家例子 , 学习各厂家的提取规 则并提取各厂家的值 , 最后由用户标注的厂家名 、 地 址、 电话 、 邮编例子 , 学习厂家名 、 地址 、 电话 、 邮编的 提取规则并提取其值1 设被正确提取的各厂家值为 如下 所 示 的 e1 , e2 , e3 , e4 : e1 : S pecialty B iscuits , ( 26) 555 — L t d 1〈Π B〉 〈B 〉 29 Ki ng ’ s W ay 〈Π B〉 〈B 〉 4448 ; e2 : New Engl an d Seaf ood Can nery 〈Π B〉 〈B 〉 ( 617 ) 555 — 2100 Paul Revere B l v d 1 〈Π B〉 〈B〉 3267 〈Π B〉 〈B〉 02134 ; e3 : G ’day , M ate 〈Π B〉 〈B〉 170 ( 02 ) Pri nce Edw ard Hill 〈Π B〉 〈B〉 2042 〈Π B〉 〈B〉 ( ) 555 — 5914 〈Π B〉 〈 B 〉 02 555 — 5915 : e4 : Pavlov a , L t d 1〈Π B〉 〈 B 〉 Rose S t 1 M oonie Pon ds 〈Π B〉 〈B 〉 03 2 444 22343 〈Π B〉 〈B 〉 30581 其中需提取的子结点数据 地址 、 电话 、 邮 采用关系模式可表示为厂家 ( 厂家名 、 编) 1 但与传统关系模型不同的是提取的元组中存 在缺省属性 ( 如 e1 缺省邮编 ) 、 属性存在多属性值
+( 如 e3 包含两个电话号码 ) 、 属性的顺序不一致 ( 如 e2 的顺序是电话 、 邮编 , 而 e3 是邮编 、 电话 ) 1 现有
+
+1　 Web 信息的表示和提取
+本文采用类似文档对象模型 DOM 的层次树表 示 Web 信息 ,在该层次树中页结点表示需提取的数 据 ,内部结点表示复合结点 , 分为一般复合结点和
+list 复合结点 ( 记为 list ( x ) , 表示多个 x 结点的集
+
+合) 1 例 11 以下是一个有关产品信息的 H TML 文档 节选 ,其层次树表示如图 1 所示1 〈B 〉 Teati me Chocol ate B iscuits 〈Π B〉 〈B R〉 　 〈 I〉 9120 〈ΠI 〉 〈B R〉 〈B 〉 S pecialt y B iscuits , L t d 1〈Π B〉 　 〈B 〉 29 Ki ng ’ s W ay 〈Π B〉 ( 26) 555 24448 　　 〈B 〉 〈Π B〉 〈B R〉 　　　 〈 L I〉 〈 I〉 100 2500 〈ΠI 〉 〈 I〉 5% 〈ΠI〈 〉 B R〈 〉 L I〈 〉 I〉 501〈 2 ΠI〈 〉 I〉 8 %〈ΠI〈 〉B R〉 … 1
+
+方法不能正确提取例 2 中的数据1 以下研究通过例 子学习父结点 e1 , e2 , e3 , e4 中各子结点厂家名 、 地 址、 电话 、 邮编的提取规则 , 并正确地提取其值1
+
+2　 基于 HTML 的模式代数
+H TML 文档是由标记 ( token) 组成的序列 ,这些 标记包括 H TML 标记 、 标点符号 、 分隔字符 ( 空格 、
+
+“ 2” 等) 、 数字 、 小写字符串 、 大写字符串等1 本文用 ( ) ( ) ( ) N u m 2 , Pu nc 2 , S P 2 , SL ( 2) , S UL ( 2) , S U
+( 2) 分别表示 Web 页中数字标记 、 标点符号 、 分隔字
+Fig1 1 　The hierarchical tree of t he Web page in example 11
+
+图1　 例 1 中 Web 页的层次树
+
+为归纳学习 Web 信息的提取规则 ,需提供被标 注的例子页 [ 1 ]1 例如 , 用户可用鼠标点亮标注需提 取的数据1 对 list ( x ) 结点 , 可由标注的实例学习提 取各 x 结点的规则1 在上一层结点 ( 父结点) 已被正
+
+符标记 、 首字母为小写字母的字 、 仅首字母为大写字 [2 ] 母的字、 其余字的泛化标记 ( generalization token) 1 在以下归纳学习中 , 各种类型的具体标记都可以泛 化 ( generalizing) 为相应的泛化标记1 如例 1 中的具 体数字标记 “29” “ , 100” 等在归纳学习中都可以泛化 为数字的泛化标记 N u m ( 2) 1 从父结点中提取各 个子结点 , 关键是获得子结点在父结点中开始和
+
+1646
+
+计算机研究与发展 　 2006 , 43 ( 9)
+
+结束识别规则1 因结束识别规则与开始识别规则类 似 , 以下只讨论开始识别规则 , 识别 x 指识别 x 的 开始1 定义 11 模式是由 H TML 的标记 、 泛化标记 、 通 配标记 “3 ” 或直到标记 “ u ntil ( t ) ” 组成的一个序 列 , 其中 t 为 H TML 的标记或泛化标记 , 直到标记 “ u ntil ( t ) ” 只能出现在最后1 定义 1 模式中通配标记 “3 ” 表示通配任意标 记 , 直到标记 “ u ntil ( t ) ” 1 的语义表示 “直到 t 出现” 定义 21 设标记序列 S = S 1 xS 2 , x 为子结点 , 若 模式 r 的最后一个标记不为直到标记 “ until ( t ) ” ,则 模式 r 匹配 S 1 是指模式 r 中的非通配标记在 S 1 中 依次出现1 若模式 r 的最后一个标记为直到标记 “ u ntil ( t ) ” , 则模式 r 匹配 S 1 是指模式 r 中最后一 个标记前的非通配标记在 S 1 中依次出现 , 而 t 在 x 中出现1 若模式 r 匹配 S 1 , 则称模式 r 识别 x ; 若模 式 r 在 S 中不匹配 , 则称模式 r 与 S 无关1
+) 识别 例 31 对例 2 中的 e3 , 模式 r1 = ( 3〈 B 〉 ) 识别邮编结点 , 地址结点 , 模式 r2 = ( 3 〈B 〉 3〈 B 〉
+
+Ω , 由模式和的定义可得 : r3 ∈ 性质 11 ① r1 + r2 = r2 + r1 ; ② ( r1 + r2 ) +
+r3 = r1 + ( r2 + r3 ) ; ③若 r1 与序列 K 无关 , r 是模
+
+式空间 Ω 中任一模式 , 则 r1 + r 也与序列 K 无关1
+
+3　 模式类包装器归纳学习
+以下设例子集 E 分为包含子结点 x 的例子集 E1 : E1 = { e1 : S 1 = S 11 x S 12 , e2 : S 2 = S 21 x S 22 , …,
+e m : S m = S m 1 x S m 2 } 和不包含子结点 x 的例子集 E2 , 即 E = E1 ∪E2 1
+
+定义 61 若模式 r 识别 E1 的子集 Ej 中每一个 子结点 x , 且 r 与 E2 ∪( E1 - Ej ) 中的每一个无关 , 则称模式 r 为例子集合 E 中子结点 x 的一致模式1 对模式集 R = { r1 , r2 , …, r k } , 其中 r i 是与例子集 合 E 一致的模式 , 令 r i 从 r1 到 r k : 循环 , 每次循环 置 E = E - Ej , Ej 为例子集 E 中 r i 能识别的子集 , 则若循环结束时 E = E2 , 则称模式集 R 为例子集 E 中子结点 x 的一致模式集1 设需从例子集 E 提取 n 个子结点 x 1 , x 2 , …, x n 1 若对任一 x i ( i = 1 , 2 , …, n ) , 存在例子集 E 中 的一致模式集 L i , 则提取 n 个子结点为扫描各个例 子标记序列 , 依次从 L 1 , L 2 , …, L n 中查找 , 若存在
+L i 包含匹配该序列的模式 , 则匹配的位置是子结点 x i 的开始位置1 x i 的结束位置可同样得到1 因此 ,
+
+但对 e2 , r2 将导致错误识别 , 因邮编结点的第 1 个 标记为数字 , 而电话号码的第 1 个标记为标点符号1 模式 r3 = ( 3 〈B〉 3 〈B〉 u ntil ( N u m ( 2) ) ) 将识别 e3 中的邮编结点 , 同时 , 对 e2 , r3 将不会导致错误识 别 , 其中 u ntil ( N u m ( 2) ) 的语义表示 “直到数字标 记出现” 1 定义 31 以下对标记序列 A = a1 a2 …ak ,记 M A =
+{ ( a′ 1 a′ 2 …a′ k ) | a′ i = a i ∨a′ i = 3 ∨ a′ i = g ( ai ) , i =
+
+1 , 2 , …, k } , 其中 , g ( a i ) 表示 a i 的泛化标记1 设
+1 1 2 2 m 1 ∈M A , m 2 ∈M B , m 1 = a 1 1 a2 …a k , m 2 = a1 a2 …
+
+提取 Web 信息的关键是得到各个子结点的一致模 式集1 定义 71 设 L 1 , L 2 , …, L n 分别为子结点 x 1 ,
+x 2 , …, x n 的 ( 开始 ) 一致模式集 , R 1 , R 2 , …, R n 分
+
+a k , 则 m 1 , m 2 之和定义为 m = m 1 + m 2 = { a′ 1 a′ 2 … a′ k | a′ i = a i + a i , i = 1 , 2 , …, k} , 其中 a′ i = ai + ai
+1 2 1 2 2 定义 如 下 : 若 a1 i , a i 中 有 一 个 为 g ( ai ) , 则 和 为
+
+2
+
+别为子结点 x 1 , x 2 , …, x n 的结束一致模式集 , 则模 式类包装器定义为 { 〈 L 1 , R1〉 〈 , L 2 , R2〉 , …〈 , Ln, R n〉 }1 穷举搜索子结点 x 的模式空间可以找到与子 结点 x i 一致的模式 , 但是一个 N P 完全问题1 以下 采用启发式方法 ,称 H TML 标记 、 标点和分隔符 、 其 他标记的顺序为特征顺序1 在集合 E1 :{ S 11 , S 21 , …, S m 1 } 中按特征顺序选取最长的序列1 按特征顺 序的原因是 H TML 标记是决定属性的开始和结束 的最重要的标志 , 其次为标点和分隔标记1 选择最 长的原因是能够提供足够多的信息将错误匹配转变 为正确匹配或无关1 设 E1 中特征最长序列为 S i1 , S i = S i 1 x S i 2 = a 1 a 2 …a k x S i 2 , 设结点 x 的首标记为
+b , 算法分为以下两步1
+
+g ( a i ) ; 否则 , 若有一个为 a i , 则和为 a i ; 若两者都为
+
+3 时 , 则和为 3 1 定义 41 设标记序列 S = B x A , x 是需提取的结 点 , 定 义 Ω = { ( m 1 , u ntil ( m x ) ) | ( m 1 ∈ M B ) ∧
+( m x ( M x ) } 为序列 S 中子结点 x 的模式空间1
+
+定义 51 设序列 S = B x A 中子结点 x 的模式空 间为 Ω , r1 = ( m 1 , u ntil ( n 1 ) ) ∈Ω , r2 = ( m 2 , Ω , 其中 m 1 , m 2 ( M B , n 1 , n 2 ∈M x , 则 u ntil ( n 2 ) ) ∈
+r1 与 r2 的和定义为 r = r1 + r2 = ( ( m 1 + m 2 ) , u n2 til ( n 1 + n 2 ) ) 1
+
+设序列 S 中子结点 x 的模式空间为 Ω , r1 , r2 ,
+
+李石君等 : 基于 HTML 模式代数的 Web 信息提取方法
+
+1647
+
+第 1 步 :选取 S i 关于 x 的一元模式 r1 = ( 3 … 3 a k ) 或 r2 = ( 3 … 3 u ntil ( b) ) , 用 r1 或 r2 去匹 配 S i , 若两者都提前匹配 S i , 则按特征顺序从 a k - 1 到 a1 中选取一个标记 a j , 改进模式 r1 和 r2 为 r1 =
+r 1 + ( 3 … 3 a j 3 … 3 ) , r 2 = r2 + ( 3 … 3 a j 3 …
+
+3 ) , 如此循环 , 直到 r1 或 r2 识别 x 1 记改进模式
+r1 和 r2 的过程为 A d dSelf R ule1 A d dSelf R ule ( S = a1 a 2 …a k x S 2 )
+
+　 Π3 设 S i = S i 1 x S i 2 = a1 a2 …ak x S i2 3 Π For E = E1 ∪E2 的每个例子 S j = S j1 x S j2 If r 对 S j 中 x 错误识别 Then r ←A d dNew R ule ( r , S j = S j 1 x S j 2 ) Π3 改进错误匹配的模式 r 为正确匹配或 无关 3 Π While E 中存在滞后匹配或虚假匹配例子 S j = S j1 x S j2 ,
+r ←A d dNew R ule ( r , S j = S j 1 x S j 2 ) E = E - { S j} 　 返回 r GenM odeR uleSet ( E = E1 ∪E2 )
+
+　r1 = ( 3 …3 ak ) , r2 = ( 3 …u ntil ( b) ) Π3 b 为 x 的首标记 3 Π 　 While r1 和 r2 都提前匹配 S , 　　 按特征顺序从 ak - 1到 a1 中选取一个元素 aj 　　r1 ←r1 + ( 3 …3 aj 3 …3 ) , r2 ←r2 + ( 3 …3 a j 3 …3 ) , 　If r1 匹配 S Then 返回 r1 Else 返回 r2 1 第 2 步 :用第 1 步得到的模式 r 去匹配例子集
+E = E1 ∪ E2 , 设 r 对 E 产生错误匹配的子集为 E′ ,
+
+对 E′ 的每个例子 S j , 设匹配的标记序列为 S ′ j , 按特 征顺序从 ak - 1 到 a1 中选取一个不在 S ′ j 的逆置标 记序列中的标记 , 若不存在这种标记 , 则例子集 E 不存在子结点 x i 的一致模式集1 否则 , 设该标记为
+a j , 则将模式 r 改进为 r = r + ( 3 … 3 a j 3 … 3 ) ,
+
+改进的模式 r 必将对例子 S j 的匹配后移 , 直到 r 要 么匹配 S j , 要么与 S j 无关1 记改进模式 r 的过程为
+A d dNew R ule1 若子结点 x i 存在一致模式 , 循环调
+
+Π3 产生一致的模式集 3 Π 　 While ( E1 ≠ ) 　　r ←GenM odeR ule ( E = E1 ∪E2 ) 　　 Π3 由例子集 E 产生一个与 x 一致的模式 3 Π 　　For E1 中每一个例子 ei , 　　 Π3 从 E 中删除能由 r 识别的例子 3 Π 　　　If r 识别 ei Then E1 ←E1 - { ei } 　　R ←R ∪ { r} Π3 R 初值为空 3 Π 返回 R 1 由 GenModeRule 算法可知 , 由该算法产生的模 式是与各子结点一致的模式 ; 因此 , GenModeRuleSet 算法是有效的1 至于算法的完备性问题是一个有待 进一步研究的问题1 例 41 以下对例 2 中的例子集 E 求关于邮编子 结点的一致模式集1 此时 E1 = { e2 , e3 , e4 } , E2 = { e1 } , 选择特征最长序列为 e2 的 S 21 ( 即 “ New Eng2 l an d Seaf ood Can nery 〈Π B 〉 … 555 — 3267〈Π B〉 ) , 调用 A d dSelf R ule 可得到识别 e2 的模式 : 〈B 〉 ” ( r1 = 3 〈 B 〉3〈Π B〉 〈B 〉 u ntil ( N u m ( 2) ) ) , 该模式 识别 e2 , e3 , 与 e1 无关 , 对 e4 错误识别1 对 e4 调用 A d dNew R ule 得到改进的模式 : r′ 〈B 〉 3 - 3 1 = ( 3 〈Π B〉 〈B 〉 u ntil ( N u m ( 2) ) ) , r′ 1 识别 e4 , e2 , 但将导 致以前识别的 e3 变为无关 , 由性质 1 可得 r′ 1 仍然 与 e1 无关1 置 E1 = E1 - { e4 , e2 } = { e3 } , 重复以上 步骤选择特征最长序列为 e3 的 S 31 , 调用 A d dSel 2 ) f R ule 可得识别 e3 的模式 : r2 = ( 3 〈B 〉 3 〈Π B〉 〈B 〉 1 此时 E1 = E1 - { e3 } = 1 因此 , 例子集 E 中邮编 子结点的一致模式集为 L 4 = { r′ 1 , r2 } 即 L 4 = { ( 3 〈B 〉 3 - 3 〈Π B〉 〈B 〉 u ntil ( N u m ( 2) ) ) , ( 3 〈B 〉 3〈Π ) 1 同样可得到厂家名的一致模式集为 L 1 = B〉 〈B 〉 { 3 u ntil ( S UL ( 2) ) } , 地址为 L 2 = { 3 〈B〉 } , 电话为 L 3 = { 3 until ( ( ) , 3 ( 3 until ( ( ) , 3 u ntil ( N u m
+
+用 A d dNew R ule , 得到的改进模式 r 对 E 的每一个 例子要么匹配 , 要么无关 , 即 r 是 E 中 x i 的一致模 式1 记产生一致的模式的过程为 GenM odeR ul 1 利 用 GenM odeR ul , 由一致模式集的定义可产生 E 中
+x i 的一致模式集 , 算法记为 GenM odeR uleSet 1 A d dNew R ule ( 模式 r , S = a1 a 2 …a k x S 2 ) Π3 改
+
+进的模式 r 3 Π 　 While r 对 S 产生错误匹配 ( 设匹配的元素 ) , 序列为 S ′ 　　If 按特征顺序从 a k - 1 到 a1 中选取一个 　　　 不在 S ′ 的逆置元素序列中的元素 a j 　　　Then r ←r + ( 3 …3 aj 3 …3 ) , 返回 r ,
+GenM odeR ule ( E = E1 ∪ E2 , E1 : { ei : S 1 = S 11 x S 12 , e2 : S 2 = S 21 x S 22 , …, e m : S m = S m 1 x S m 2 } ) Π3 产生一致的模式 3 Π
+
+　i ← 从例子集 E1 中选择特征最长序列 S i 1 　r ←A d dSelf R ule ( S i 1 = a1 a2 …ak )
+
+1648
+
+计算机研究与发展 　 2006 , 43 ( 9)
+
+( 2) 2) } 1 注意 , 在电话的一致模式集中 , 第 1 个模式
+
+识别 e1 , e2 、 第 2 个模式识别 e3 中的多个电话 、 第3 个模式识别 e4 1 类似可得到识别各子结点的结尾的 一致模式集 R 1 , R 2 , R 3 , R 4 1 故例 2 中的例子集 E 的模式类包装器为 { 〈 L 1 , R1〉 〈 , L 2 , R2〉 , …〈 , L4 ,
+R 4〉 } 1 由该包装器可提取各个厂家 S 1 , S 2 , …S n 中
+
+点 ,表 2 主要包括具有缺省属性 、 多属性值 、 属性顺 序不惟一的表结构 Web 站点1 表 1 各列分别为站点 U RL 、 Web 数据树结构的层数 、 由查准率 , 查全率 , 训练例子数表示的实验结果1 表 2 各列分别为站点 U RL 、 属性个数 、 由 Yes 和 No 表示表结构网页信息 是否具有缺省属性 、 多属性值 、 属性顺序不惟一1 例 如 ,表 2 第 2 行中包含书目信息的网址中 “作者” 存 在多属性值 ; 大部分书记录具有 “Bib Tex “属性值 ,但 少部分缺省该属性值 , 另外属性 “书号 ISBN ” 和 “年 份” 都存在缺省 ; 属性 “书号 ISBN ” 和属性 “年份” 具 有两种顺序 ,一是 “年份” 在前 “书号 ISBN ” 在后 , 二 是 “书号 ISBN ” 在前 “年份” 在后1 第 4 列为平均查 准率 、 平均查全率 、 训练例子数1
+
+厂家名 、 地址 、 邮编和电话1
+
+4　 实验结果
+本文实现了模式类包装器原型系统 , 对实际 Web 站点进行了实验 , 部分站点的实验结果情况如 表 1 和表 2 所示1 表 1 主要包括层次结构的 Web 站
+
+Table 1 　Experiment Result of Web Sites with Hierarchical Structure
+
+表1　 具有层次结构数据的 Web 站点实验结果
+Web Site URL www1jobsjobsjobs1com www1travlang1comΠ languages www1informatik1uni2trier1deΠ ～ leyΠ dbΠ Π groupsΠ index1 ht ml www1odci1govΠ ciaΠ publicationsΠ factbookΠ us1imdb1comΠ top22502films 2 3 Number of Layers 3 Mean Precision , Recall and Number of Train Examples Type : 100 % , 100 % , 2 ; Date : 100 % , 100 % , 2 ; List of Company Name and Their URL : 100 % , 100 % , 21 2 Language : 100 % , 100 % , 1 ; URL : 100 % , 100 % , 2 ; Image : 100 % , 100 % , 6 ; Translation : 88 % , 100 % , 101 3 State : 100 % , 100 % , 2 ; Nation : 100 % , 100 % , 2 ; University : 100 % , 100 % , 1 ; Group : 70 % , 83 % , 8 ; List of Group Member and URL : 60 % , 78 % , 101 Nation Name : 100 % , 100 % , 1 ; List of State , Capital , Area , Population : 100 % , 100 % , 1 ; Total Area : 100 % , 100 % , 1 ; Total Population : 100 % , 100 % , 11 Film Name : 100 % , 100 % , 1 ; Directed by : 100 % , 100 % , 1 ; Screenplay 70 % , 86 % , 3 ; Cast : 100 % , 100 % , 5 1
+
+Table 2 　Experiment Result of Web Sites of Table Structure with Missing Attributes or Multiple Values Attributes or in Different Order
+
+表2　 具有缺省属性 、 多属性值 、 属性顺序不惟一的表结构 Web 站点实验结果
+Web Site URL www1altavista1digital1com www1informatik1uni2trier1deΠ ～ leyΠ dbΠ booksΠ collections www1cs1washington1eduΠ peopleΠ faculty1 ht ml www21technofind1com1sgΠ tf Shareware1cnet 1com 4 5 YesΠ NoΠ No YesΠ NoΠ No 2 YesΠ NoΠ No Number of Attributes 5 6 Missing AttributesΠ Multiple ValuesΠ Different Order YesΠ YesΠ No YesΠ YesΠ Yes Mean Precision , Recall and Number of Train Examples 85 % ,83 % ,5 76 % ,71 % ,9
+
+100 % ,100 % ,3 100 % ,100 % ,5 100 % ,100 % ,4
+
+　　 不失普遍性 , 本文实验网站的选取没有采用随 机选择方法 ,而是有针对性地选择上述具有缺省属 性、 多属性值 、 属性顺序不惟一的不规范表结构网站 和层次结构网站 ,以验证本方法的有效性1 实验采用平均查准率 、 平均查全率 、 训练例子作 为评价标准1从实验结果来看 ,本文提出的方法既能
+
+提取具有缺省属性 、 多属性值 、 属性顺序不惟一的表 结构网页信息又能提取层次结构网页信息 , 其平均 查准率 、 查全率较高 , 在某些网站上接近 100 % , 能 够较好地完成 Web 数据的提取 ,且其训练例子在可 接受的范围内1 由实验结果可见本文提出的方法是 有效的1
+
+李石君等 : 基于 HTML 模式代数的 Web 信息提取方法
+
+1649
+
+5　 相关研究
+怎样提取 Web 信息并将其转换为关系数据或 机器能理解和查询处理的 XML [ 3 ] 是一个困难的前 沿研究课题 ,主要采用手工编码方法 [ 425 ] 、 归纳学习 [ 122 ,629 ] [ 10 ] [ 11 ] 方法 、 启发式方法 和本体方法 1 手工编 写代码方法表达能力强但需要编写复杂的代码 , 且 由于网页经常变化而维护困难1 WIEN [ 1 ] 提出了采 用归纳学习生成包装器的方法1 主要针对规范的表 式结构信息 ,数据的识别和提取依赖于数据左右两 边的公共标记1 其表达能力弱1 SOF TM EAL Y[ 2 ] 采 用有限状态自动机归纳学习提取 Web 信息的包装 器 ,其中数据的识别依赖于数据的左右两边标记特 征 ,较 WIEN 表达能力强 , 但只针对表结构数据 , 不 适合层次结构 Web 信息1 STAL KE[ 6 ] 提出了采用归 纳学习方法提取层次结构信息源的方法 , 通过例子 学习由 landmark ( 数据的左右两边连续若干个标记) 表示的提取规则1 由于 Web 信息的复杂性和多样 性 , 很难获得 landmark 来惟一地定位要提取的信 息1本文提出的基于模式代数的包装器归纳学习方 法与现有方法相比 , 具有以下特点 : ① 提出了基于 H TML 文档的模式代数 , 其核心是识别需提取数据 的一致模式集 ; ②在整个训练例子中搜索识别需提 取数据的由多个模式组成的一致模式集1 而存在的 相关方法仅仅只在需提取数据相邻的标记中学习识 别该数据的特征标记 ,且采用单一的识别规则 ,因而 不能完全刻画识别该数据的特征1 因此 , 模式类包 装器增强了表达能力 ,适合提取具有缺省属性 、 多属 性值 、 属性具有多种不同顺序的 Web 网页信息 ; 既 支持提取表结构数据网页信息又支持提取层次结构 网页信息1
+[1]
+
+参 考 文 献
+Nicholas Kushmerick , D Weld , R Doorenbos1 Wrapper induc2 tion for information extraction [ C] 1 Int ’ l Joint Conf on Artificial Intelligence , Hyderabad , India , 1997 [2] Hsu , C M Dung1 Generating finite2state transducers for semi2 structured data extraction from t he Web [J ] 1 Journal of Infor2 mation Systems , 1998 , 23 (8) : 521 - 538 [3] Lü Jianhua , Wang Guoren , Yu Ge1 Optimizing pat h expression queries of XML data [J ] 1 Journal of Software , 2003 , 14 ( 9) : 1615 - 1620 (in Chinese) ( 吕建华 , 王国仁 , 于戈1 XML 数据的路径表达式查询优化
+
+技术 [J ] 1 软件学报 , 2003 , 14 (9) : 1615 - 1620)
+[4] J Hammer , H Garcia2Molina , S Nestorov , et al 1 Template2 based wrappers in t he TSIMMIS system [ C] 1 Int ’ l Conf on Management of Data , Tucson , Arizona , 1997 [5] R Baumgartner , S Flesca , G Gottlob1 Visual Web information extraction wit h Lixto [ C] 1 Vary Large Data Bases , Roma , I2 taly , 2001 [6] I Muslea , S Minton , Knoblock1 A hierarchical approach to wrapper induction [ C] 1 Third Conf on Autonomous Agents , Seattle , WA , 1999 [7] Xiaofeng Meng , Hongjun L u , et al 1 Data extraction from t he Web based on pre2defined schema [J ] 1 Journal of Computer Sci2 ence and Technology , 2002 , 17 (4) : 377 - 388 [8] Li Xiaodong , Gu Yuqing1 DOM2based information extraction for t he Web source [J ] 1 Chinese Journal of Computers , 2002 , 25 (5) : 526 - 533 (in Chinese) ( 李效东 , 顾毓清1 基于 DOM 的 Web 信息提取 [J ] 1 计算机
+
+学报 , 2002 , 25 (5) : 526 - 533)
+[9] Hu Dongdong , Meng Xiaofeng1 Automatically extracting Web data using tree structure [J ] 1 Journal of Computer Research and Development , 2004 , 41 (10) : 1607 - 1613 (in Chinese) ( 胡东东 , 孟小峰1 一种基于树结构的 Web 数据自动提取方
+
+法 [J ] 1 计算机研究与发展 , 2004 , 41 (10) : 1607 - 1613)
+[ 10 ] Huang Yuqing , Qi Guangzhi , Zhang Fuyan1 Extracting semi2 structured information from t he Web [J ] 1 Journal of Software , 2000 , 11 (1) : 73 - 78 (in Chinese) ( 黄豫清 , 戚广志 , 张福炎1 从 Web 文档中构造半结构化信
+
+6　 结束语
+本文提出了基于 H TML 文档的模式代数 ,在此 基础上 ,提出了一种提取 Web 信息的新方法1 该方 法定义了模式类包装器 , 并给出了其归纳学习生成 算法1 该方法采用在整个训练例子中学习由多个模 式组成的一致模式集 ,适用于提取具有缺省属性 、 多 值属性 、 属性具有多种不同顺序的表结构网页和层 次结构网页 ,其有效性在原型系统中通过实验得到 验证1 本文进一步的研究工作包括在模式类包装器 中结合对象代理模型 [ 12 ] ,以及对模式代数的完备性 等有关理论问题进行深入的研究1
+
+息的提取器 [J ] 1 软件学报 , 2000 , 11 (1) : 73 - 78)
+[ 11 ] Gao J un , Wang Tengjiao , Yang Dongqing , et al 1 Ontology2 based two2phase semi2automatic Web extraction [J ] 1 Chinese Journal of Computers , 2004 , 27 (3) : 310 - 318 (in Chinese) ( 高军 , 王腾蛟 , 杨冬青 , 等1 基于 Ontology 的 Web 内容二阶
+
+段半自动提取方法 [J ] 1 计算机学报 , 2004 , 27 ( 3) : 310 318) [ 12 ] Peng Zhiyong , L uo Yi , Shan Zhe , et al 1 Realization of work2 flow views based on object deputy model [J ] 1 Chinese Journal of Computers , 2005 , 28 (4) : 651 - 660 (in Chinese) ( 彭智勇 , 罗义 , 单 , 等1 基于对象代理模型的工作流视图
+
+实现 [J ] 1 计算机学报 , 2005 , 28 (4) : 651 - 660)
+
+1650 Li Shijun , born in 19641 He has been pro2 fessor of Wuhan University since 20061 His main research interests include database tech2 nology , Web information technology , and secure data management 1
+
+计算机研究与发展 　 2006 , 43 ( 9)
+Ou Weijie , born in 19811 He has been Ph D candidate in computing science from Wuhan University1 His main research interests in2 clude Web information and data mining1
+
+欧伟杰 ,1981 年生 ,博士研究生 ,主要研究 方向为 Web 信息技术 、 数据挖掘1
+
+李石君 ,1964 年生 ,教授 ,主要研究方向为数据库技术 、 Web 信息技术 、 数据库安全1
+Yu Junqing , born in 19751 He has been as2 sociate professor of Huazhong University of Science and Technology since 2005 , senior member of China Computer Federation1 His main research interests include retrieving of video information and artificial intelligence1
+
+于俊清 ,1975 年生 ,副教授 ,中国计算机学会高级会员 ,主要 研究方向为视觉信息检索 、 人工智能1
+Research Background Generating wrapper efficiently for extracting Web data has broad application prospect , including Web information retrieval and integration , and Web mining1 In t his paper , we introduces a pattern algebra for HTML documents and a new approach to extract Web information , which induces t he consistent pattern set wit h multiple patterns by exploring t he whole samples , and can apply Web pages wit h table structure , in which t here are missing attributes or attributes wit h multiple values or different order , and hierarchical structure1 Our work is supported by t he Hubei Provincial Science Foundation of ( 2005ABA238 ) and t he National Natural Science Foundation of China ( 60573095) 1
+
+

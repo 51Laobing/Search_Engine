@@ -1,0 +1,124 @@
+　 CN4321258/ TP 　ISSN 10072130X
+
+　　　　 计算机工程与科学
+COMPU TER EN GIN EERIN G & SCIENCE
+
+2007 年第 29 卷第 2 期 　
+
+　 Vol1 29 ,No1 2 ,2007 　
+
+文章编号 :10072130X ( 2007) 00220036204
+
+一种新型的 Web 挖掘数据采集模型
+
+3
+
+A New Web Mining Data Integratio n Mo del Ba sed o n XML
+胡迎松 ,宁海霞
+HU Ying2song , NING H ai2xia ( 华中科技大学计算机科学与技术学院 , 湖北 武汉 430074) ( School of Computer Science and Technology , Huazhong University of Science and Technology , Wuhan 430074 ,China)
+
+摘　 要 : 本文在简要论述了当前 Web 挖掘采用的数据源不足后 ,分析了 XML 文档结构与 Web 挖掘算法结构的相似 性 ,提出了采用 XML 技术在应用服务层采集用户访问数据的数据源模型 X2DIM ,并分析了它的优越性 。该模型克服了以 往基于 Web 访问日志在数据预处理中的一系列问题 ,具有数据完备 、 准确度高 、 便于为挖掘算法使用等优点 , 有较高的应 用价值 。 Abstract : The paper briefly describes t he demerit s of insufficient data so urces adopted in t he current Web mining ,analy2 ses t he similarity between t he XML document st ruct ure and t he Web mining algo rit hm st ruct ure ,p ropo ses a data source model X2DIM of adopting t he XML technology in t he applicatio n service layer to sample users’ access data ,and analyes it s advantages. The model overco mes a series of p roblems p revio usly encountered in data p rep rocessing based on t he Web access log ,and feat ures t he merit s of data co mpleteness ,high accuracy ,ease of use in mining algorit hms ,and high applicatio n value. 关键词 : XML ; X2DIM ; Web 挖掘 ; 电子商务 Key words :XML ; X2DIM ; Web mining ; E2co mmerce 中图分类号 : TP311. 13 文献标识码 :A 的研究 。然而 ,对于数据预处理过程中如何选择一个数据 源 ,又如何采集有效的数据这些方面 ,关注并不太多 。高质 量的数据源对整个挖掘过程至关重要 ,是 Web 挖掘过程的 前提部分 。本文以 Web 挖掘在电子商务中的应用为背景 , 利用 XML 技术 ,结合应用层日志 ,提出了一种新的基于会 话的数据采集模型 X2DIM ( Data Integratio n Model based on XML ,简称 X2DIM) ,来提高数据源的综合性 、 易用性和 实效性 。
+
+1　 引言
+信息时代的网络技术日新月异 , 网络计算环境给商品 流通领域和消费者购买行为带来了革命性的变化 。电子商 务的开展为企业的销售和消费者购买商品提供了极大便 利 ,所有网上行为 ( 用户行为 ) 的可记录性和数据的迅速增 长促使 Web 挖掘技术广泛运用到该领域中 。利用这种技 术可以对用户访问记录进行处理 ,以获取企业感兴趣的知 识 ,发现潜在市场 ,更好地进行市场决策 [1 ] 。 在电子商务中应用 Web 挖掘的主要目的是发现用户 访问站点的浏览模式 , 主要关注的是从访问信息中挖掘出 关联规则 、 序列模式 、 分类规则和聚类分析等知识模型 。一 般而言 ,Web 挖掘过程主要分为资源发现和数据预处理 、 算法实施 、 模式分析以及分析验证等几个阶段 [2 ] 。目前 ,国 内外各大供应商在算法的设计 、 分析和改进方面做了大量
+
+2　 当前数据收集研究
+当前电子商务 Web 挖掘的数据大部分来自于记录了 用户在 WWW 上的网站访问浏览活动的服务器端的访问 log 文件 ,其它信息则来源于用户登记信息数据以及通过工 具 ( 如 C GI 、 J avascript ) 收集到的统计数据 。服务器端 log 文件记录了来自用户的客户端 IP 、 访问的页面 、 代理服务
+
+3
+
+收稿日期 :2005209202 ; 修订日期 :2005210227 作者简介 : 胡迎松 (1966 ) ,男 ,湖北武汉人 ,教授 ,研究方向为基于网络的计算机应用 ; 宁海霞 , 硕士生 , 研究方向为基于网络的计 算机应用 。 通讯地址 :430074 湖北省武汉市华中科技大学计算机科学与技术学院 ; Tel : (027) 87547244 ; E2mail :ninghaixia @126. co m
+Address :School of Co mp uter Science and Technology , Huazhong Universit y of Science and Technology ,Wuhan , Hubei 430074 ,P. R. China
+
+36
+© 1994-2008 China Academic Journal Electronic Publishing House. All rights reserved. http://www.cnki.net
+
+器端 ID 等 。P. Oirolli 等人利用信息检索技术 ,结合路径访 问模式和站点拓扑结构来实现用户个性化访问 [1 ] , 就是应 用了基于此记录的 Web 日志挖掘算法 。面对通过以上途 径获得的看似海量 、 取之不尽的用户信息 ,在接下来的数据 预处理工作中 ,包括数据清洗 、 数据规约等 ,通常会碰到以 [1 ] 下问题 : (1) 代理引发的数据真实性问题 。在现实中 , 用户经 常通过代理服务器访问网站 ,服务器日志记录了代理服务 器端 Agent ID ,而忽略了用户的真实 ID 。这样 ,利用服务器 端日志进行数据挖掘时 , 就存在单 IP2多用户 、 多 IP2单用 户、 多 IP2单会话 ( 用户与网站会话中途亦可能更换代理) 等 情况 。目前的 Web 分析工具仅能提供用户访问网站 Web 页的统计次数 ,对于大量的访问日志 ,正确识别用户和真实 会话则无能为力 ,数据源的可信度降低 [ 3 ] 。 ( 2) 匿名信息缺失问题 。目前 , 许多商业网站的销售 活动仅仅限于已注册的消费群体 ; 对于尚未注册 、 仅抱着浏 览态度的匿名登录用户 ,有些网页或是不可见 ,或者网站干 脆将其拒之门外 。由于访问日志记录信息的局限性和缺少 必要的用户登记信息 , 这些访问者的访问记录在进行数据 过滤时往往显得多余 。然而 ,实际上这些访问者的信息对 于发现潜在用户群体是十分必要的 。 ( 3) Cache 机制问题 。为了减少网络流量 ,客户端采用 了 Cache 机制暂存网页 , 导致服务器端 log 对用户访问的 Web 部分信息记录缺失 。即使采用推理网站拓扑结构补 全序列 ,但与用户实际访问情况仍有所差别 。 ( 4) 保存信息不足问题 。Web 服务器记录的只局限于 用户访问网站浏览到的网页 ,而用户与网站交易的最终结 果则记录在数据库文件中 。用户对网页的操作 , 例如某用 户对特定商品的查询 、 购买等操作并没有记录下来 。而这 些数据对于发现用户的购买心理和行为模式等十分关键 。 分析以上问题不难得出结论 : 以往的 Web 挖掘数据来 源虽然广泛 ,但作为用户访问挖掘的基础仍存在片面性和 孤立性 ,而且仍不够充分 。它们之间不能实现有效的结合 , 忽视了网站的需求 ,给数据分析人员带来了很多困扰 。如 果能够寻求到一种新的数据源模型 , 它可以克服以上数据 源的不足 ,尽可能地采集到用户和网站会话期间来自用户 各方面的访问数据 ,实现来自访问日志的用户浏览记录和 用户对网页操作记录的有机融合 ,将极大地有助于分析人 员对用户行为模式的研究 [ 3 ,4 ] 。 下面将根据在商务网站发布的网页上的各种数据类型 进行 U ML 建模 , 构造出用户和网站会话期间的数据结构 类图 ,并结合当前因特网广泛应用的 XML 技术 ,提出一种 新型的数据采集模型 , 以实现对用户访问网站涉及到的各 种数据的采集与集成 [3 ,5 ] 。
+
+利用的数据源 ,是本文要关注的主要问题 。
+
+31 2 　X 2D IM 模型
+在这里 ,以一个典型的电子商务活动为背景 ,来分析抽 象出这个活动所要涉及到的各个实体 。很容易想到 ,用户 、 商品以及用于发生交易的平台 — — — 商务网站 , 是不可缺少 的部分 。为了要将用户尽可能多的信息记录下来 , 需要进 一步把用户的一些动作抽象出来 ,而在交易过程中发生的 搜索某种特定商品 、 改变商品数目 、 查看购物篮等操作作为 用户的某种特定的动作出现 。另外 ,出于网站安全性以及 性能上的考虑 , 交易都是在用户一次会话过程中完成的 。 因此 ,模型 X2DIM 将涉及到用户 、 会话 、 网页 、 交易 、 商品和 用户动作这几个部分 。对于各个部分的相关特性 , 涉及到 的操作描述如下 : (1) 用户 ( U SER) : 它包含的属性有用户帐 号 ( SUB2 SID) 、 会 话 参 数 ( MID) 、 密 码 ( PASSWORD) 、 登录信息 ( R EGIN FO) 、 状态 ( STA TU S) 、 客户主机 (D EV ICEID) 、 请 求页面的 U RL ; 涉及的操作有登录 ( login) 、 退出 ( logout ) 。 ( 2) 会话 ( SESSION ) : 包含的特性有用户帐号 ( SUB2 SID) 、 访 问 时 间 ( ACCESSTIM E ) 、 会 话 生 存 期 ( SU RV2 ) ( TIM E ; 涉及的操作为退出会话 logo ut ) 。 会话是用户访问网站的核心 ,用户浏览网页均在会话期 间完成。用户与网站的会话需要有最大会话时间限制 ,系统将 对用户和网页会话时间进行判断 :如会话时间过长 ,超出会话 生存期 ,系统会认为用户离站 ,将自动结束会话 (logout) 。 (3) 网页 ( WEB PA GE) : 包含了用户浏览网页的 U RL 、 该网页的商品列表 、 该网页的关键字和用户访问时间等特 性 。网页与交易动态关联 , 这是由用户消费行为的无目的 性和随机性决定的 。 ( 4) 交易 ( TRAD E) : 交易类封装了用户在商务网站的 交易 ,每一笔交易都涉及不同事件 , 包括用户帐号 ( SUB2 SID) 、 操作时间 ( ACCESSTIM E) 、 所在页的 U RL 、 商品名 称 ( COMMODIT YID) 、 数量 ( AMOUN T) 等属性 。另外 ,交 易还涉及不同的事件 , 而事件又涉及用户帐号和商品 ID 。 交易需返回给系统布尔变量表示交易是否成功 ( ISSUC2 CEED) 。交易要求在会话期间完成 。 (5) 事件 ( EV EN T) : 事件是交易的派生 ,即交易是由各 种事件组成的 。事件中有两个属性是固定的 ,即访问时间 和商 品 数 量 。事 件 名 称 ( AC TION ID ) 可 以 是 搜 索 SEA RC H 、 购买 BU Y、 放弃购买 ABANDON 、 改变商品数 目 C HAN GEAMOUN T 等 。 ( 6) 商品 ( COMMODIT Y) : 网页上涉及的商品与现实 买卖的商品相比 , 是一种抽象概念 , 仅提供 ID 和所在的 Web 页的 U RL 。 根据上面的描述 ,我们建立了如图 1 所示的 X2DIM 模 型的 U ML 静态结构图 , 它体现了用户 、 会话 、 网页和商品 这些在电子商务交易中的关系 ,将用户 、 网站和访问信息三 种数据类型有机融合 。 在 Web 挖掘预处理过程中 ,该数据采集模型具备以下 一些优点 ,具体包括 : ( 1) 最大限度地保存与用户相关的数据 。模型中对用 户类设置了 SUBSID 属性 ,当用户为网站注册用户时 ,用户 将保存在 SUBSID 里 ,用户对于商品的查询 、 购买 ( 发生交
+
+3　 基于 XML 的数据采集模型 X 2DIM
+31 1 　 Web 数据分类
+Web 上的数据来源广泛 , 形态各异 , 结合用户与电子 商务网站会话的实际情况 ,我们将 Web 挖掘过程涉及到的 数据分为三类 : 页面结构数据 、 用户数据和访问数据 。如何 将这些数据有效地结合 、 收集起来 ,形成高效的 、 便于处理
+
+37
+© 1994-2008 China Academic Journal Electronic Publishing House. All rights reserved. http://www.cnki.net
+
+　　 < Commodit yItem id =“002”/ >
+< / Commodit y > < / WebPage > < TradeList > 　　 < Trade id =“t1 ”Co mmodit yID =“001 ” Host U RL = “http :/ / www. ppyt . co m/ index. asp ” isSucceed =“t rue” > 　　　　< event name =“AddtoCart ”AMOUN T =“30 ”de2 scription =“NULL ”/ > 　　　　 < event name =“ChangeAMOUN T ”AMOUN T = “10”description =“NULL ”/ > 　　 < / Trade > < / TradeList > < / Session >
+
+图 1 　X2DIM 模型 U ML 静态结构图
+
+易) 等数据也将保存在与这个 SUBSID 相关的数据里 ; 对于 非注册 ( 匿名) 用户 ,对于相关网页的查询 、 商品的浏览和查 询等信息也将保存起来 ,把 SUBSID 设置成 NULL ,表示并 不与具体用户关联 ,这些数据也能作为后期数据挖掘的依 据。
+( 2) 尽可能准确地保存用户数据 。当是网站的注册用
+
+户时 ,以会话为基础的用户访问数据记录可以很好地将用 户在浏览网站时进行的操作封装在基于同一 SESSION 的 数据中 ,这样的数据能使后期数据识别更加准确 ,数据源可 信度得到了提高 。 (3) 数据融合 。将 Web 挖掘所需的部分来自服务器访 问日志的网页浏览统计数据及用户信息和用户交易操作数 据等进行了动态集成 ,使来自各方面的用户信息相互融合 。
+Web 数据多为半结构化和非结构化 , 用户对网页的操
+
+正如上面所描述 ,用户访问网站时 ,服务器应用层日志 生成了一个以 Session 为根节点的 XML 数据包 ,其中包含 了用户访问电子商务网站期间的一切操作 — — — 浏览网页以 及所作的交易 。设置最大会话时间的意义在于排除了因多 IP2单会话等原因导致的会话模糊 , 能更加有效地进行会话 识别 。XML 语言的动态扩展性支持文档内部和文档之间 的关联 , 很 好 地 满 足 了 Web 挖 掘 的 实 时 需 要 。建 立 在 XML 技术上的 X2DIM 利用了 XML 语言的平台无关性和 XML 文档内部的动态关联属性 , 为下一步的数据挖掘工 作 ,特别是关联规则发现和序列模式预测以及数据文件在 各个异构数据库之间的传输奠定了基础 。
+
+4　 应用分析
+X2DIM 模型参照用户在访问网站期间各种访问数据 之间的属性关联 , 利用 XML 技术的树结构父子节点路径 关系使看似毫无关联的操作很好地融合起来 。根据日志已 存的 XML 数据包 ,可以很容易生成关系数据库表 : (1) X2DIMSUBSCRIB ER : 用户信息表 ,包含字段 SUB2 SID 、 M ID 、 PASSWORD 、 D EV ICEID 、 R EGIN FO 、 STA R2 TU S) ; ( 2 ) X2DIMSUBSCRIP TION : 用 户 访 问 表 , 包 含 字 段 M ID 、 ACCSSTIM E 、 COMMODIT YID 、 HOSTU RL ) ; ( 3 ) X2DISUBSCRIP TION H ISTOR Y: 用 户 访 问 明 细 表 ,包含字段 H ISTOR YID 、 M ID 、 SU SID 、 EV EN TNAM E 、 D ESCRIP TION 、 ACCESSTIM E 、 COMMODIT YID 、 A2 MOUN T 、 ISSUCCEED) 。 服务器应用层日志负责对各种事件进行捕捉 , 生成的 事件类型将适时保存到数据库的相应数据表中 ,在以后需 要的时候可以根据这些表的记录生成用户的会话列表 。X2 DIM 在数据采集中既极大地融合了浏览 、 购买等各种事 件 ,又兼容以往的 Web 挖掘算法 ,并支持多维数据挖掘 。 电子商务中经常应用的 FP 算法是一种典型的应用树 结构进行单维关联规则推导的算法 ,在用户访问数据构造 频繁模式树 FP2t ree 的过程中经常重复的操作是 : (1) 利用解释器将 Session 中的复合事件拆分为简单 事件 ; (2) 扫描 Sessio ns 并收集一项项目次数 , 按照支持度 排序建立列表 L ; ( 3) 创建根节点 root y ; ( 4) 对于会话中的每一项 ,执行下述操作 : Insert ( x ( name , v al ue) , y)
+
+作是动态 、 多变的 。从某种角度上讲 ,Web 上的数据处理模 式和 XML 文件的树型结构具有相似性结构 ,可以被认为是 一些节点的集合 。目前 ,各种大型商用数据库系统对 XML 都提供了完善的支持 ,与用户密切相关的数据全部以 XML 的形式封装 。这种封装形式将极大地有利于数据导入 、 交换 等操作 。而且 ,XML 这种树型结构的数据 ,为一些常用的数 据挖掘算法提供了便利 。根据 XML Schema 事先定义的
+XML 文档结构对用户数据分类 ,可以很容易实现对用户的 访问模式变化的获取 。通过对某一网页的连续操作关联分
+
+析 ,可以得到用户购买行为和网页之间的潜在关联 。 本文利用 ASP. N ET 技术和 XML 技术在服务器端实 时跟踪用户访问操作 。当用户来访时 ,将用户访问数据按 照预先设定的模式封装成 XML 格式的数据流 , 记录于应 用层日志文件 。这些数据可以日后保存在数据库中 , 以便 于对用户访问历史纪录进行进一步的研究分析 。 下面列出一个典型的以 XML 格式封装的数据流 。假 设某用户 u1 在电子网站访问期间进行了包括浏览网页 、 购 ( ) 买商品 COMMODIT YID 为 001 以及修改等操作 ,应用层 日志记录如下 :
+< ? xml version =“1. 0”encoding =“utf28” ? > < Session > < ACCESS TIM E > 12/ Mar/ 2005 ; 13 : 34 : 5320600 < / AC2 CESS TIME > < SU RV TIM E > 30 minites < / SU RV TIM E > < U ser SUBID =“u1 ”PASSWORD =“123456 ”DEV ICEID =“202. 69. 194. 72 ”REGIN FO =“”S TA TU S =“1 ”REQDEV I2 CEID =“ht tp :/ / www. ppyt . com” > < / U ser > < WebPage WebU RL = “http :/ / www. ppt y. com/ new/ In2 dex. asp ”KeyWord =“new” > < Co mmodit y > 　　 < Co mmodit yItem id =“001”/ >
+
+该操作以 y 为根节点 , 将事件 x 节点插入 , name 和 val ue
+
+38
+© 1994-2008 China Academic Journal Electronic Publishing House. All rights reserved. http://www.cnki.net
+
+对应于事件 x 的名称和值 ; ( 5) Insert ( T x , x) : 调用递归算法以节点 x 为根节点 , 将以节点 x 为根的子树插入 。 利用 X2DIM 模型收集数据得到的数据库表 ,执行算法 GenSession :
+输入 : 关系数据表 X2DIMSUBSCRIP TION 、 X2DISUBSCRIP2 TION HISTOR Y; 输出 : 会话列表 SessionList 。 方法 : executeQU ER Y( select b. SUBSID , a. MID , b. COMMODI2 T YID , AMOUN T , HOS TU RL , a. ACCESS TIM E , ISSUCCEED f ro m X2DIMSUBSCRIP TION a L EF T OU TER J OIN X2DISUB2 SCRIP TION HISTOR Y b ON a. MID = b. MID orderby a. ACCESS TIM E desc , b. SUBSID desc)
+
+中 。X2DIM 可以帮助企业发现潜在市场 ,改进商品营销策 略 ,为电子网站商业智能化和推出个性化推荐服务提供可 靠保障 。
+
+参考文献 :
+[ 1 ] 　Kohavi R , Mason L , Parekh R , et al . Lessons and Challen2 ges f ro m Mining Retail . E2Commerce Data [ J ] . Machine Learning Journal , 2004 ,57 (1/ 2) :832113. [2] 　 涂承胜 ,陆玉昌 . Web 使用挖掘技术研究 [J ] . 小型微型计算
+
+机系统 ,2004 ,25 (7) :117721184.
+[3] 　 卢正鼎 ,张素智 . 集成 Web 数据的系统框架与实现方法 [J ] .
+
+小型微型计算机系统 ,2003 ,24 (10) :175921762.
+[ 4 ] 　Estié venart F , Francois A , Henrard J , et al . A Tool2Sup2 ported Met hod to Ext ract Data and Schema f ro m Web Sites [ A ] . Proc of t he 5t h IEEE Int ’ l Workshop on Web Site Evo2 lution[ C] . 2003. [5] 　 李颖基 ,彭宏 ,郑启伦 . 统一事件 Web 挖掘模型 [J ] . 计算机应
+
+由算法生成的会话列表每一项都是简单事件 , 无需拆 分 ,避免了对不同路径上节点的关联模式进行毫无意义的 挖掘 ,不但简化了 FP2t ree 关联规则挖掘算法 , 而且大大降 低了搜索开销 。 分析上面的例子 , u1 浏览网页 p1 并访问商品 001 , 则 添加子树 x ( 001 ) 到 p1 下 , 子树 x 的叶节点为 ( x1 ( Addto2 Cart ,20) ) 自动插入到节点 x 下 , 更改数量等操作只需要重 复叶节点加入 。由以上算法 , 我们可以分析产生例子模式 集{ ( Browse , p1) , ( Deal ,001) } , 发现浏览与对商品操作的 多维关系 。这在原来基于 Web 日志的挖掘算法是很难做 到的 。 特别地 ,用户对网页的操作在不断增加 ,用户交易不断 变更 ,将经常变动的部分从大量用户访问数据抽取出来进 行单独分析 ,可以反映用户访问模式的整体变化 。利用用 户访问网站留下的大量历史记录 ,特别是将行为或特征模 式具有相似性的用户群会话记录中关联部分抽取出来 , 计 算某时间点的商品购买和浏览网页顺序变化 ,可以预测到 用户选择商品和服务的概率和倾向 。
+
+用研究 ,2004 ,21 (3) :47249.
+
+( 上接第 11 页)
+
+处理 。具体做法是 , 支付网关对收到的授权请求 Request_ A ut h 进行解密可以得到顾客的数字证书 , 首先确认顾客 C 的身 份 , 其 中 , Request _ A ut h = S I GN2S K M ( C ER T M ‖ C ER T C ‖ EN2 K CM ( EN2S K C ( P I ) ) ‖ EN2 P K P ( P I N ‖ KCM ) ‖EN2 K CM ( H ( EN2 K MC ( m) ) ) ) ; 其次 , 支付网关还会 对收到的验证信息 I n f o_V al 加以解密 , 得到交易商品信息 m2 , 其中 , I n f o_ V al = EN2 P K P ( m2 ‖ KMC ‖ S I GN2S K C ( O I) ‖S I GN2S K M ( H ( EN2 K MC ( m2 ) ) ) ) 。在顾客 C 抵赖 进行商品 m 2 交易的情况下 , 支付网关选择介入 , 让商家对 商品 m2 进行报价 , 由支付网关通过金融专用网完成交易 双方资金的划拨 , 保证了交易的不可否认性 。
+
+5　 结束语
+X2DIM 采用 XML 技术 , 在应用服务器层进行用户访
+
+4　 结束语
+A2SET 协议不仅保持了 SET 协议原有的安全特性 , 同时能够有效克服 SET 协议在商品原子性以及交易不可 否认性方面的不足 , 增强了 SET 协议的安全性 。基于 A2 SET 协议的安全支付系统已在武汉精伦电子开发的金融 终端上得到了成功的应用 ,该终端可以提供金融增值服务 , 如小额电子支付 、 银行卡缴费以及公交卡充值等 。因此 ,从 实践来看 ,A2SET 协议具备一定的应用价值和前景 。
+
+问数据收集 ,还有一些技术实施的细则需要完善 : 以上讨论 的 XML 数据以 Sessio n 作为根节点 , 在日常的数据采集 中 ,数据分析人员常常定期从服务器导出数据 。如果以天 为时间单位 ,则日期作为根节点更恰当 。在这里没有使用 XML 解析器 ,但当日内所有用户访问结束之前 , 不能写入 最后的根标记 。一种可行的资源集中方法是使用 File 对象 的 Read To End 方法将一个现存的 XML 数据的所有内容 都读入一个变量中 ,使用空字符串替换现存的结束根标记 , 添加一个新用户访问记录 ,然后将结束根标记输出到文档 末尾 。每当有用户记录要添加时 ,都要反复运行 。当然 ,处 理该问题还有更加便捷高效的方法 ,是下一步关注的焦点 。 总体而言 ,该模型封装了用户在一次会话中发生的多 个操作 ,解决了以往数据源预处理的一系列问题 ,数据更精 确、 更合理 ; XML 语言的通用性和平台无关性使该模型得 到的数据源可以在现有的各种平台下分析 、 传输和存储 ,克 服了 Web 上数据的不兼容问题 ; XML 文档的结构模型与 Web 挖掘算法构造的树模型具有相似性 ,可以及时应用到 电子商务关联分析 、 序列模式 、 聚类分析等常见的挖掘算法
+
+参考文献 :
+[ 1 ] 　阙喜戎 , 孙锐 , 龚向阳 , 等 . 信息安全原理及应用 [ M ] . 北京 :
+
+清华大学出版社 ,2003.
+[2] 　 关振胜 . 公钥基础设施 P KI 与认证机构 CA [ M ] . 北京 : 电子
+
+工业出版社 ,2002.
+[3] 　 陈豫 , 陈向阳 . SET 协议的分析与改进 [J ] . 微型机与应用 , 2004 ,6 (1) :34235. [4] 　 尹存燕 ,谢俊元 . 一个公平 、 有效的安全电子交易协议 [J ] . 计
+
+算机应用研究 ,2002 ,19 (1) :58263.
+[5] 　 Schneier B. 应用密码学 : 协议 、 算法与 C 源程序 [ M ] . 吴世忠
+
+译 . 北京 : 机械工业出版社 ,2000.
+
+39
+© 1994-2008 China Academic Journal Electronic Publishing House. All rights reserved. http://www.cnki.net
+
+
